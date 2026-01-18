@@ -9,7 +9,14 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+    # Groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     player = Player(x=SCREEN_WIDTH / 2, y=SCREEN_HEIGHT / 2)
+
     while True:
         log_state()
         for event in pygame.event.get():
@@ -17,11 +24,15 @@ def main():
                 return
         # Update game state
         dt = clock.tick(60) / 1000
-        player.update(dt)
+        # player.update(dt)
+        updatable.update(dt)
 
         # Start rendering
         screen.fill("black")
-        player.draw(screen)
+        # player.draw(screen)
+        for sprite in drawable:
+            sprite.draw(screen)
+
         pygame.display.flip()
 
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
