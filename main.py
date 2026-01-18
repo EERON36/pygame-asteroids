@@ -15,14 +15,14 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-
-        screen.fill("black")
-
-        # draw player here
-        player.draw(screen)
-
-        pygame.display.flip()
+        # Update game state
         dt = clock.tick(60) / 1000
+        player.update(dt)
+
+        # Start rendering
+        screen.fill("black")
+        player.draw(screen)
+        pygame.display.flip()
 
     print(f"Starting Asteroids with pygame version: {pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH}")
