@@ -100,7 +100,7 @@ def main():
         screen.fill("black")
 
         if game_state == MENU:
-            title = font.render("RONSTEROIDS", True, (255, 255, 255))
+            title = font.render("ASTEROIDS BY RONSTER", True, (255, 255, 255))
             prompt = small_font.render("Press SPACE to play", True, (255, 255, 255))
 
             screen.blit(
